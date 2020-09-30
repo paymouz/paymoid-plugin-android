@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="paymo_id_promo_title">#424242</color>
+    <color name="paymo_id_promo_text_description">#616161</color>
+    <color name="paymo_id_promo_divider_line">#BABABA</color>
+    <color name="paymo_id_promo_background">#FFFFFF</color>
+    <color name="paymo_id_promo_install_button">#689f38</color>
+    <color name="paymo_id_promo_cancel_button">#689f38</color>
+</resources>

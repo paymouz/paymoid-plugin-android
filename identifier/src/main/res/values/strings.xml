@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paymo_id_google_play_trademark">*Google Play и логотип Google Play являются товарными знаками корпорации Google LLC.</string>
+    <string name="paymo_id_install">Установить</string>
+    <string name="paymo_id_cancel">Отмена</string>
+    <string name="paymo_id_promo_description">Приложение PAYMO.ID не найдено на вашем устройстве. Что-бы продолжить, необходимо скачать приложение, затем повторить попытку снова.</string>
+    <string name="paymo_id_continue">Продолжить</string>
+</resources>

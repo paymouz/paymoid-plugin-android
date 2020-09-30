@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paymo_id_google_play_trademark">*Google Play va Google Play logotipi Google LLC savdo belgilari hisoblanadi.</string>
+    <string name="paymo_id_install">Yuklab olish</string>
+    <string name="paymo_id_promo_description">PAYMO.ID ilovasi mobil qurilmangizda topilmadi. Davom etish uchun ilovani yuklab olishingiz kerak, so\'ngra takror urinib ko\'ring.</string>
+    <string name="paymo_id_continue">Yuklab olish</string>
+    <string name="paymo_id_cancel">Bekor qilish</string>
+</resources>

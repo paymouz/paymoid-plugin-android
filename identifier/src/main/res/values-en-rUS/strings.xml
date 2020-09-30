@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paymo_id_google_play_trademark">*Google Play and the Google Play logo are trademarks of Google LLC.</string>
+    <string name="paymo_id_cancel">Cancel</string>
+    <string name="paymo_id_continue">Continue</string>
+    <string name="paymo_id_install">Install</string>
+    <string name="paymo_id_promo_description">PAYMO.ID is not found on your device. To continue, you have to download the app first, then try again.</string>
+</resources>
