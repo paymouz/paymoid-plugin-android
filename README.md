@@ -1,1 +1,1 @@
-# PAYMO.Identifier
+# paymoid-plugin-android
