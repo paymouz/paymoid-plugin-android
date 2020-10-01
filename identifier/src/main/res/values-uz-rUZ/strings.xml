@@ -5,4 +5,5 @@
     <string name="paymo_id_promo_description">PAYMO.ID ilovasi mobil qurilmangizda topilmadi. Davom etish uchun ilovani yuklab olishingiz kerak, so\'ngra takror urinib ko\'ring.</string>
     <string name="paymo_id_continue">Yuklab olish</string>
     <string name="paymo_id_cancel">Bekor qilish</string>
+    <string name="paymo_id_unknown_error">Xatolik yuz berdi keyinroq qayta urinib ko\'ring!</string>
 </resources>

@@ -9,6 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import uz.paymo.identifier.R
 
-abstract class RoundedBottomSheetDialog(
+internal abstract class RoundedBottomSheetDialog(
     context: Context
 ) : BaseBottomSheetDialog(context, R.style.RoundedBottomSheetDialog)

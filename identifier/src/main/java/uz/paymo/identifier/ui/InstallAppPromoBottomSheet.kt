@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.paymo_id_bottomsheet_install_app_promo.vie
 import uz.paymo.identifier.R
 import uz.paymo.identifier.ui.base.RoundedBottomSheetDialog
 
-class InstallAppPromoBottomSheet(
+internal class InstallAppPromoBottomSheet(
     context: Context,
     onCancel: () -> Unit,
     onInstall: () -> Unit

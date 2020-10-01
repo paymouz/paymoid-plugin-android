@@ -5,4 +5,5 @@
     <string name="paymo_id_continue">Continue</string>
     <string name="paymo_id_install">Install</string>
     <string name="paymo_id_promo_description">PAYMO.ID is not found on your device. To continue, you have to download the app first, then try again.</string>
+    <string name="paymo_id_unknown_error">Something went wrong, please try again!</string>
 </resources>

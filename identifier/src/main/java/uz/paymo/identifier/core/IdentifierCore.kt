@@ -5,6 +5,7 @@
 package uz.paymo.identifier.core
 
 import android.content.Intent
+import android.graphics.Bitmap
 import uz.paymo.identifier.IdentificationListener
 
 /**
@@ -45,12 +46,27 @@ internal interface IdentifierCore {
     fun hasHardwareNFCSupport(): Boolean
 
     /**
+     * Converts base64 string based photo to android [Bitmap]
+     * @param base64 encoded string
+     * @return decoded [Bitmap] image from [base64]
+     */
+    fun base64ToBitmap(base64: String): Bitmap
+
+    /**
+     * Converts base64 string based photo to [ByteArray]
+     * @param base64 encoded string
+     * @return decoded [ByteArray] image from [base64]
+     */
+    fun base64ToByteArray(base64: String): ByteArray
+
+    /**
      * Start Identification process in PAYMO.ID
-     * @param sessionLink Unique generated dynamic link by the PAYMO.ID Backend service
+     * @param agentId Unique ID for the 3rd party service given by PAYMO
+     * @param apiKey key for specific agent given by PAYMO
      * @throws SoftwareSupportException when device does not support by its MIN SDK.
      * You may check using [hasSoftwareSupport]
      */
-    fun requestIdentification(sessionLink: String)
+    fun requestIdentification(agentId: Int, apiKey: String)
 
     /**
      * Initialize the result data from PAYMO.ID.

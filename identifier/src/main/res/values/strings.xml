@@ -5,4 +5,5 @@
     <string name="paymo_id_cancel">Отмена</string>
     <string name="paymo_id_promo_description">Приложение PAYMO.ID не найдено на вашем устройстве. Что-бы продолжить, необходимо скачать приложение, затем повторить попытку снова.</string>
     <string name="paymo_id_continue">Продолжить</string>
+    <string name="paymo_id_unknown_error">Произошла ошибка повторите попытку позже!</string>
 </resources>
