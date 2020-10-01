@@ -127,6 +127,7 @@ class PaymoIdentifier private constructor(
          * @param activity source of the activity ([AppCompatActivity]) from where it is being called
          * @return Instance for the [PaymoIdentifier]
          */
+        @JvmStatic
         fun getInstance(appCompatActivity: AppCompatActivity): PaymoIdentifier =
             PaymoIdentifier(appCompatActivity)
 
@@ -136,6 +137,7 @@ class PaymoIdentifier private constructor(
          * @return Instance for the [PaymoIdentifier]
          * @throws IllegalArgumentException when [Fragment.getActivity] is null
          */
+        @JvmStatic
         fun getInstance(fragment: Fragment): PaymoIdentifier {
             if (fragment.activity == null)
                 throw IllegalArgumentException("Fragment's Activity cannot be null")
