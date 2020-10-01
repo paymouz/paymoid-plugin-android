@@ -10,7 +10,7 @@ import android.net.Uri
 import uz.paymo.identifier.BuildConfig
 
 internal const val PLAYSTORE_LINK = "https://play.google.com/store/apps/details?id="
-internal const val IDENTIFICATION_DEEPLINK = "paymo-id://identification/"
+internal const val IDENTIFICATION_DEEPLINK = "paymo-id://agent/oauth/"
 
 internal fun Activity.getCoreAppIntent(): Intent? {
     val intent = this.packageManager?.getLaunchIntentForPackage(BuildConfig.PAYMO_ID_PACKAGE)
