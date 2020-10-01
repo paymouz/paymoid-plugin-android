@@ -5,6 +5,7 @@
 package uz.paymo.identifier.core
 
 import android.content.Intent
+import android.graphics.Bitmap
 import uz.paymo.identifier.IdentificationListener
 
 /**
@@ -43,6 +44,20 @@ internal interface IdentifierCore {
      * @return [true] if supports and [false] otherwise
      */
     fun hasHardwareNFCSupport(): Boolean
+
+    /**
+     * Converts base64 string based photo to android [Bitmap]
+     * @param base64 encoded string
+     * @return decoded [Bitmap] image from [base64]
+     */
+    fun base64ToBitmap(base64: String): Bitmap
+
+    /**
+     * Converts base64 string based photo to [ByteArray]
+     * @param base64 encoded string
+     * @return decoded [ByteArray] image from [base64]
+     */
+    fun base64ToByteArray(base64: String): ByteArray
 
     /**
      * Start Identification process in PAYMO.ID

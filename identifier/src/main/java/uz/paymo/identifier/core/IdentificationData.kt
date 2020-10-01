@@ -4,19 +4,18 @@
 
 package uz.paymo.identifier.core
 
-import com.google.gson.annotations.SerializedName
+import uz.paymo.identifier.core.network.models.UserData
 
 data class IdentificationData(
     /**
      * Success status of Passport Identification process
      * [true] if user has passed successfully, and [false] otherwise
      */
-    @SerializedName("success")
     val success: Boolean,
 
     /**
-     * AuthKey required for 3rd party app to get Passport Data information
+     * [UserData] for passport identification from PAYMO.ID
+     * NOTE: if [success] is false, [userData] will be null since no data passed
      */
-    @SerializedName("auth_key")
-    val authKey: String
+    val userData: UserData? = null
 )

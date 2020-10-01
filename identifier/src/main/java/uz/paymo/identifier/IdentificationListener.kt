@@ -17,10 +17,17 @@ interface IdentificationListener {
     fun onIdentificationComplete(identificationResult: IdentificationData)
 
     /**
-     * Callback for canceled identification process from PAYMO.ID
+     * Callback for explicitly canceled identification process from PAYMO.ID
      * (Ex. User closed PAYMO.ID without making some identification steps)
      */
     fun onIdentificationCancel()
+
+    /**
+     * Callback for failed connection with PAYMO.ID
+     * Might be called when AgentLogin for AuthKey process fails
+     * or error during the [IdentificationData] retrieval process
+     */
+    fun onIdentificationFailed(throwable: Throwable)
 
     /**
      * OPTIONAL: Callback for cancelled install option of PAYMO.ID app

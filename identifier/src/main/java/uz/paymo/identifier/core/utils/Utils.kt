@@ -5,14 +5,17 @@
 package uz.paymo.identifier.core.utils
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.nfc.NfcAdapter
 import android.os.Build
+import android.util.Base64
 import uz.paymo.identifier.BuildConfig
 import java.security.MessageDigest
 
 
 internal class Utils {
-    companion object {
+    internal companion object {
         fun hasSoftwareSupport(): Boolean = Build.VERSION.SDK_INT >= BuildConfig.PAYMO_ID_MIN_SDK
         fun hasHardwareNfcSupport(context: Context): Boolean {
             return try {
@@ -22,6 +25,7 @@ internal class Utils {
                 false
             }
         }
+
         fun md5(toEncrypt: String): String {
             return try {
                 val digest = MessageDigest.getInstance("md5")
@@ -36,6 +40,14 @@ internal class Utils {
                 e.printStackTrace()
                 ""
             }
+        }
+
+        fun base64PhotoToBytes(encodedHash: String?): ByteArray =
+            Base64.decode(encodedHash ?: "", Base64.DEFAULT)
+
+        fun base64PhotoToBitmap(encodedHash: String?): Bitmap {
+            val bytes = base64PhotoToBytes(encodedHash)
+            return BitmapFactory.decodeByteArray(bytes, 0, bytes.size);
         }
     }
 }

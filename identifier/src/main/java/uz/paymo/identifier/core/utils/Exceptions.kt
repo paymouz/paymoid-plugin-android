@@ -10,3 +10,7 @@ import uz.paymo.identifier.BuildConfig
 class SoftwareSupportException : Exception(
     "PAYMO.ID is not supported by the device. MIN SDK VERSION ${BuildConfig.PAYMO_ID_MIN_SDK}, but found ${Build.VERSION.SDK_INT}"
 )
+
+class PAYMOIDConnectionError(
+    message: String
+) : Exception(message)
