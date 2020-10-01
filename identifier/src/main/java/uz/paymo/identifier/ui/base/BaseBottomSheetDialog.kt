@@ -10,7 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-abstract class BaseBottomSheetDialog : BottomSheetDialog {
+internal abstract class BaseBottomSheetDialog : BottomSheetDialog {
 
     private val bottomSheetCallback: BottomSheetCallback = object : BottomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, @BottomSheetBehavior.State newState: Int) {
