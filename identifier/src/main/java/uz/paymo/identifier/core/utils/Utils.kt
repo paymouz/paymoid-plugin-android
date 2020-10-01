@@ -2,12 +2,13 @@
  * Copyright (c) Siyavushkhon Kholmatov, 26/9/2020 at 22:21
  */
 
-package uz.paymo.identifier.core
+package uz.paymo.identifier.core.utils
 
 import android.content.Context
 import android.nfc.NfcAdapter
 import android.os.Build
 import uz.paymo.identifier.BuildConfig
+import java.security.MessageDigest
 
 
 internal class Utils {
@@ -21,6 +22,20 @@ internal class Utils {
                 false
             }
         }
-
+        fun md5(toEncrypt: String): String {
+            return try {
+                val digest = MessageDigest.getInstance("md5")
+                digest.update(toEncrypt.toByteArray())
+                val bytes = digest.digest()
+                val sb = StringBuilder()
+                for (i in bytes.indices) {
+                    sb.append(String.format("%02X", bytes[i]))
+                }
+                sb.toString().toLowerCase()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                ""
+            }
+        }
     }
 }

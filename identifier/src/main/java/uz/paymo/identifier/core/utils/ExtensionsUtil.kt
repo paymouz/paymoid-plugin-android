@@ -2,7 +2,7 @@
  * Copyright (c) Siyavushkhon Kholmatov, 27/9/2020 at 13:41
  */
 
-package uz.paymo.identifier.core
+package uz.paymo.identifier.core.utils
 
 import android.app.Activity
 import android.content.Intent
