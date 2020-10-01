@@ -46,11 +46,12 @@ internal interface IdentifierCore {
 
     /**
      * Start Identification process in PAYMO.ID
-     * @param sessionLink Unique generated dynamic link by the PAYMO.ID Backend service
+     * @param agentId Unique ID for the 3rd party service given by PAYMO
+     * @param apiKey key for specific agent given by PAYMO
      * @throws SoftwareSupportException when device does not support by its MIN SDK.
      * You may check using [hasSoftwareSupport]
      */
-    fun requestIdentification(sessionLink: String)
+    fun requestIdentification(agentId: Int, apiKey: String)
 
     /**
      * Initialize the result data from PAYMO.ID.

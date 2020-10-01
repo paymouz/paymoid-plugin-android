@@ -14,8 +14,18 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
-import uz.paymo.identifier.core.*
+import kotlinx.coroutines.*
+import uz.paymo.identifier.core.IdentificationData
+import uz.paymo.identifier.core.IdentifierCore
+import uz.paymo.identifier.core.network.RetrofitService
+import uz.paymo.identifier.core.network.base.processResponse
+import uz.paymo.identifier.core.network.base.safeExecute
+import uz.paymo.identifier.core.network.models.AgentLogin
+import uz.paymo.identifier.core.network.models.AgentLoginRequest
+import uz.paymo.identifier.core.network.models.makeAgentLoginRequest
+import uz.paymo.identifier.core.utils.*
 import uz.paymo.identifier.ui.InstallAppPromoBottomSheet
+import uz.paymo.identifier.ui.LoadingBottomSheet
 
 /**
  * Helper Identifier class for PAYMO.ID app
@@ -24,6 +34,7 @@ class PaymoIdentifier private constructor(
     private val activity: AppCompatActivity,
     private val fragment: Fragment? = null
 ) : IdentifierCore {
+
     private val context: Context = activity.baseContext
     override var identificationListener: IdentificationListener? = null
     override var requestCode: Int = DEFAULT_REQUEST_CODE
@@ -33,17 +44,11 @@ class PaymoIdentifier private constructor(
     override fun hasHardwareNFCSupport(): Boolean = Utils.hasHardwareNfcSupport(context)
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    override fun requestIdentification(sessionLink: String) {
+    override fun requestIdentification(agentId: Int, apiKey: String) {
         when {
             !coreAppInstalled() -> showInstallCorePromo()
             !hasSoftwareSupport() -> throw SoftwareSupportException()
-            else -> {
-                val intent = activity.getCoreAppIntent()!!
-                val authKey = parseSessionDynamicLink(sessionLink)
-                intent.setAuthKey(authKey)
-                if (fragment != null) fragment.startActivityForResult(intent, requestCode)
-                else activity.startActivityForResult(intent, requestCode)
-            }
+            else -> initAgentLogin(makeAgentLoginRequest(agentId, apiKey))
         }
     }
 
@@ -65,6 +70,31 @@ class PaymoIdentifier private constructor(
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    private fun initAgentLogin(agentLogin: AgentLoginRequest) {
+        val loadingBottomSheet = LoadingBottomSheet(activity)
+        loadingBottomSheet.show()
+        CoroutineScope(Dispatchers.IO).launch {
+            loadingBottomSheet.onCancel = { this.cancel() }
+            val response = RetrofitService.agentService.safeExecute {
+                loginAgent(agentLogin)
+            }
+            withContext(Dispatchers.Main) {
+                response.processResponse(
+                    onSuccess = { data ->
+                        loadingBottomSheet.dismiss()
+                        startPaymoID(data.data)
+                    },
+                    onFailure = {
+                        loadingBottomSheet.setError(it.status)
+                    },
+                    onError = { msg, throwable ->
+                        throwable.printStackTrace()
+                        loadingBottomSheet.setError(null)
+                    }
+                )
+            }
+        }
+    }
 
     private fun showInstallCorePromo() {
         val promoSheet = InstallAppPromoBottomSheet(
@@ -82,8 +112,11 @@ class PaymoIdentifier private constructor(
         activity.startActivity(intent)
     }
 
-    private fun parseSessionDynamicLink(dynamicLink: String): String {
-        return dynamicLink
+    private fun startPaymoID(agentLogin: AgentLogin) {
+        val intent = activity.getCoreAppIntent()!!
+        intent.setAuthKey(agentLogin.authKey)
+        if (fragment != null) fragment.startActivityForResult(intent, requestCode)
+        else activity.startActivityForResult(intent, requestCode)
     }
 
     companion object {
