@@ -20,8 +20,13 @@ class MainActivity : AppCompatActivity(), IdentificationListener {
         paymoIdentifier = PaymoIdentifier.getInstance(this)
         paymoIdentifier.identificationListener = this
         identifyButton?.setOnClickListener {
-            if (authKeyInput?.text?.isBlank() == false)
-                paymoIdentifier.requestIdentification(authKeyInput.text.toString())
+            if (apiKeyInput?.text?.isBlank() == false && agentIdInput?.text?.isBlank() == false)
+                paymoIdentifier.requestIdentification(
+                    agentId = agentIdInput.text.toString().toInt(),
+                    apiKey = apiKeyInput.text.toString()
+                )
+            else
+                Toast.makeText(this, "Fill all the fields", Toast.LENGTH_LONG).show()
         }
     }
 
