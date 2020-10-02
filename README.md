@@ -11,7 +11,7 @@ PAYMO.Identifier is an android plugin to make an easy integration with PAYMO&#46
 - [How to use the library?](#how-to-use-the-library)
 - [Methods](#methods)
 - [Result IdentificationData](#result-identificationdata)
-    - [UserData](#userdata)
+    - [UserPassport](#userdata)
 
 # Installation
 **Step 1.** Add the JitPack repository to root `build.gradle` at the end of repositories:
@@ -113,17 +113,18 @@ paymoIdentifier.requestIdentification(agentId, apiKey)
 | Field | Description |
 | ------ | ------ |
 | success : `Boolean` | Status of passport identification process |
-| userData : `UserData` (*nullable*) | User passport data from identification process of PAYMO&#46;ID. if `success` is `false`, `userData` will be null since no data passed |
+| id: `Long` | Unique ID of identification process |
+| agentId : `Int` | Agent ID used for identification process |
+| authKey: `String` | Auth key defining Agent for identification   |
+| ipAddress: `String` | IP address of device (*empty* if `success` is `false`) |
+| userAgent: `String` | Device user agent during identification (*empty* if `success` is `false`) |
+| deviceInfo: `String` | Device information (*empty* if `success` is `false`) |
+| userPassport : [`UserPassport`](#userpassport) (*nullable*) | User passport data from identification process of PAYMO&#46;ID. (**null** if `success` is `false`) |
 
-### UserData
+### UserPassport
 Available data fields from successful identification process
 | Field | Description |
 | ------ | ------ |
-| id: `Long` | Unique ID of identification process |
-| authKey: `String` | Auth key defining Agent for identification   |
-| ipAddress: `String` | IP address of device |
-| userAgent: `String` | Device user agent during identification |
-| deviceInfo: `String` | Device information  |
 | passportNumber: `String` | User passport number |
 | pin: `String` | Passport's person identification number |
 | firstName: `String` | First name in passport |
