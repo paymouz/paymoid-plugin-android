@@ -11,7 +11,7 @@ PAYMO.Identifier is an android plugin to make an easy integration with PAYMO&#46
 - [How to use the library?](#how-to-use-the-library)
 - [Methods](#methods)
 - [Result IdentificationData](#result-identificationdata)
-    - [UserPassport](#userdata)
+    - [UserPassport](#userpassport)
 
 # Installation
 **Step 1.** Add the JitPack repository to root `build.gradle` at the end of repositories:
