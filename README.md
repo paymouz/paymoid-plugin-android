@@ -17,11 +17,11 @@ PAYMO.Identifier is an android plugin to make an easy integration with PAYMO&#46
 **Step 1.** Add the JitPack repository to root `build.gradle` at the end of repositories:
 ```gradle
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 **Step 2.** Add the dependency in your app `build.gradle`
 ```gradle
@@ -32,7 +32,7 @@ dependencies {
 # How to use the library?
 ## Kotlin
 ### Setup
-First get the instance of `PaymoIdentifier` in your **activity** or **fragment**
+First get the instance of `PaymoIdentifier` in your **activity** or **fragment**.\
 For `AppCompactActivity` call inside `onCreate`:
 ```kotlin
 ...
