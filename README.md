@@ -8,7 +8,7 @@ PAYMO.Identifier is an android plugin to make an easy integration with PAYMO&#46
 
 # Table of contents
 - [Installation](#installation)
-- [How to use the library?](#how-to-use-the-library?)
+- [How to use the library?](#how-to-use-the-library)
 - [Methods](#methods)
 - [Result IdentificationData](#result-identificationdata)
     - [UserData](#userdata)
