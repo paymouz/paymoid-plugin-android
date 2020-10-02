@@ -20,6 +20,11 @@ data class IdentificationData(
     val id: Long,
 
     /**
+     * Agent ID used for identification process
+     */
+    val agentId : Int,
+
+    /**
      * Auth key defining Agent for identification
      */
     val authKey: String,

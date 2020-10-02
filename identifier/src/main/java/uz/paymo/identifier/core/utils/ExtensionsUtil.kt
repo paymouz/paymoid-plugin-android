@@ -31,6 +31,7 @@ internal fun IdentificationResult.parseToIdentificationData() : IdentificationDa
     return IdentificationData(
         success = success,
         id = id,
+        agentId= agentId,
         authKey = authKey,
         ipAddress = ipAddress ?: "",
         userAgent = userAgent ?: "",
