@@ -26,7 +26,7 @@ allprojects {
 **Step 2.** Add the dependency in your app `build.gradle`
 ```gradle
 dependencies {
-    implementation 'com.github.paymouz:paymoid-plugin-android:1.0.0-alpha01'
+    implementation 'com.github.paymouz:paymoid-plugin-android:1.0.0-alpha02'
 }
 ```
 # How to use the library?
