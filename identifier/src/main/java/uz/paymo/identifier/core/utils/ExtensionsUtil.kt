@@ -8,6 +8,8 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import uz.paymo.identifier.BuildConfig
+import uz.paymo.identifier.core.IdentificationData
+import uz.paymo.identifier.core.network.models.IdentificationResult
 
 internal const val PLAYSTORE_LINK = "https://play.google.com/store/apps/details?id="
 internal const val IDENTIFICATION_DEEPLINK = "paymo-id://agent/oauth/"
@@ -22,4 +24,19 @@ internal fun Activity.coreAppInstalled(): Boolean = (this.getCoreAppIntent() != 
 
 internal fun Intent.setAuthKey(authKey: String) {
     this.data = Uri.parse(IDENTIFICATION_DEEPLINK + authKey)
+}
+
+internal fun IdentificationResult.parseToIdentificationData() : IdentificationData {
+    val success = state == 1
+    return IdentificationData(
+        success = success,
+        id = id,
+        agentId= agentId,
+        authKey = authKey,
+        ipAddress = ipAddress ?: "",
+        userAgent = userAgent ?: "",
+        deviceInfo = deviceInfo ?: "",
+        identifiedPhotoBase64 = identificationPhoto ?: "",
+        userPassport = userPassport
+    )
 }

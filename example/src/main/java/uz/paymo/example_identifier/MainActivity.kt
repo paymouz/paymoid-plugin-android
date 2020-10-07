@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity(), IdentificationListener {
         identifyButton?.setOnClickListener {
             if (apiKeyInput?.text?.isBlank() == false && agentIdInput?.text?.isBlank() == false) {
                 resultInfo?.text = ""
-                imageView?.visibility = View.GONE
+                identifiedImage?.visibility = View.GONE
+                passportImage?.visibility = View.GONE
                 paymoIdentifier.requestIdentification(
                     agentId = agentIdInput.text.toString().toInt(),
                     apiKey = apiKeyInput.text.toString()
@@ -42,9 +43,11 @@ class MainActivity : AppCompatActivity(), IdentificationListener {
     override fun onIdentificationComplete(identificationResult: IdentificationData) {
         resultInfo?.text = "Success: ${identificationResult.success}"
         if (identificationResult.success) {
-            imageView?.visibility = View.VISIBLE
-            val data = identificationResult.userData!!
-            imageView?.setImageBitmap(paymoIdentifier.base64ToBitmap(data.photoBase64))
+            identifiedImage?.visibility = View.VISIBLE
+            passportImage?.visibility = View.VISIBLE
+            val data = identificationResult.userPassport!!
+            identifiedImage?.setImageBitmap(paymoIdentifier.base64ToBitmap(identificationResult.identifiedPhotoBase64))
+            passportImage?.setImageBitmap(paymoIdentifier.base64ToBitmap(data.photoBase64))
             resultInfo?.append("\nName: ${data.firstName} ${data.lastName}")
             resultInfo?.append("\nPassport number: ${data.passportNumber}")
             resultInfo?.append("\nPIN: ${data.pin}")
@@ -52,10 +55,10 @@ class MainActivity : AppCompatActivity(), IdentificationListener {
             resultInfo?.append("\nDate of issue: ${data.dateOfIssue}")
             resultInfo?.append("\nDate of expiry: ${data.dateOfExpiry}")
             resultInfo?.append("\nIssuer centre: ${data.issuerCentre}")
-            resultInfo?.append("\nIP Address: ${data.ipAddress}")
-            resultInfo?.append("\nUserAgent: ${data.userAgent}")
-            resultInfo?.append("\nDevice Info: ${data.deviceInfo}")
-            resultInfo?.append("\nAuthKey: ${data.authKey}")
+            resultInfo?.append("\nIP Address: ${identificationResult.ipAddress}")
+            resultInfo?.append("\nUserAgent: ${identificationResult.userAgent}")
+            resultInfo?.append("\nDevice Info: ${identificationResult.deviceInfo}")
+            resultInfo?.append("\nAuthKey: ${identificationResult.authKey}")
         }
     }
 

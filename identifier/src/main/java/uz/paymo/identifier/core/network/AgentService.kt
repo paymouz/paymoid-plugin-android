@@ -8,7 +8,8 @@ import retrofit2.http.Path
 import uz.paymo.identifier.core.network.base.BaseModel
 import uz.paymo.identifier.core.network.models.AgentLogin
 import uz.paymo.identifier.core.network.models.AgentLoginRequest
-import uz.paymo.identifier.core.network.models.UserData
+import uz.paymo.identifier.core.network.models.IdentificationResult
+import uz.paymo.identifier.core.network.models.UserPassport
 
 internal interface AgentService {
     @PUT("/agent/login")
@@ -21,5 +22,5 @@ internal interface AgentService {
         @Path("agent_id") agentId: Int,
         @Path("auth_key") authKey: String,
         @Path("sign") signSalt: String
-    ): Response<BaseModel<UserData>>
+    ): Response<BaseModel<IdentificationResult>>
 }

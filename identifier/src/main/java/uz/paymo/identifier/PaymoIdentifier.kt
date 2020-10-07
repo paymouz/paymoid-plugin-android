@@ -15,7 +15,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
-import uz.paymo.identifier.core.IdentificationData
 import uz.paymo.identifier.core.IdentifierCore
 import uz.paymo.identifier.core.PluginCallbackResult
 import uz.paymo.identifier.core.network.models.AgentLogin
@@ -68,12 +67,7 @@ class PaymoIdentifier private constructor(
                     if (jsonData != null) {
                         val callbackResult =
                             Gson().fromJson(jsonData, PluginCallbackResult::class.java)
-                        if (!callbackResult.success)
-                            identificationListener?.onIdentificationComplete(
-                                IdentificationData(false)
-                            )
-                        else
-                            retrieveIdentificationData(callbackResult.authKey)
+                        retrieveIdentificationData(callbackResult.authKey)
                     } else
                         identificationListener?.onIdentificationCancel()
                 }
@@ -136,11 +130,7 @@ class PaymoIdentifier private constructor(
             loadingBottomSheet = LoadingBottomSheet(activity),
             apiRequest = { getData(agentId!!, authKey, salt) },
             onSuccess = { response ->
-                val success = response.data.state == 1
-                val identificationData = IdentificationData(
-                    success = success,
-                    userData = if (success) response.data else null
-                )
+                val identificationData = response.data.parseToIdentificationData()
                 identificationListener?.onIdentificationComplete(identificationData)
             },
             onFailure = this::onConnectionError,
