@@ -62,6 +62,12 @@ data class UserPassport(
     val nationality: String,
 
     /**
+     * Person's place of birth 
+     */
+    @SerializedName("place_of_birth")
+    val placeOfBirth : String,
+
+    /**
      * Person's photo in passport
      */
     @SerializedName("photo")
