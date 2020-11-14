@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/passportNumTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PASSPORT No."
+            android:textColor="@color/md_grey_500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/passportNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/passportNumTitle"
+            app:layout_constraintTop_toBottomOf="@id/passportNumTitle"
+            tools:text="AA1234567" />
+
+        <TextView
+            android:id="@+id/countryCodeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="COUNTRY CODE"
+            android:textColor="@color/md_grey_500"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/passportNumTitle"
+            app:layout_constraintEnd_toStartOf="@id/passportNumTitle" />
+
+        <TextView
+            android:id="@+id/countryCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/countryCodeTitle"
+            app:layout_constraintTop_toBottomOf="@id/countryCodeTitle"
+            tools:text="UZ" />
+
+        <TextView
+            android:id="@+id/genderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="JINSI/SEX"
+            android:textColor="@color/md_grey_500"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/countryCodeTitle"
+            app:layout_constraintEnd_toStartOf="@id/countryCodeTitle" />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/genderTitle"
+            app:layout_constraintTop_toBottomOf="@id/genderTitle"
+            tools:text="MALE" />
+
+        <TextView
+            android:id="@+id/typeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="TURI/TYPE"
+            android:textColor="@color/md_grey_500"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/genderTitle"
+            app:layout_constraintEnd_toStartOf="@id/genderTitle" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/typeTitle"
+            app:layout_constraintTop_toBottomOf="@id/typeTitle"
+            tools:text="P" />
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="110dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passportNum"
+            tools:src="@color/md_grey_500" />
+
+        <ImageView
+            android:id="@+id/currentPhoto"
+            android:layout_width="110dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="130dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="@id/photo"
+            app:layout_constraintTop_toBottomOf="@id/photo"
+            tools:src="@color/md_grey_500" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/detailsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/photo"
+            app:layout_constraintTop_toTopOf="@id/photo">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FAMILIYASI/SURNAME"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/surname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="Kholmatov" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    
+                    android:text="ISMI/NAME"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="Siyavushkhon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    
+                    android:text="FUQAROLIGI/NATIONALITY"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/nationality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="UZB" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TUG'ILGAN JOYI/\nPLACE OF BIRTH"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/placeOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="TOSHKENT" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TUG'ILGAN SANA/\nDATE OF BIRTH"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dateOfBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="27 11 1998" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    
+                    android:text="BERILGAN SANASI/\nDATE OF ISSUE"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dateOfIssue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="18 01 2015" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="AMAl QILISH MUDDATI/\nDATE OF EXPIRY"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dateOfExpiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="17 01 2025" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="PIN №."
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/inplNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="1234567" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="PERSONALLASHTIRISH\nORGANI/\nAUTORITY"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/authoriy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="2"
+                    android:ellipsize="end"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="STATE PERSONALIZATION CENTRE" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

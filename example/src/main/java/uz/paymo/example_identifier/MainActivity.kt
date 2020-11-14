@@ -3,7 +3,6 @@ package uz.paymo.example_identifier
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,8 +22,6 @@ class MainActivity : AppCompatActivity(), IdentificationListener {
         identifyButton?.setOnClickListener {
             if (apiKeyInput?.text?.isBlank() == false && agentIdInput?.text?.isBlank() == false) {
                 resultInfo?.text = ""
-                identifiedImage?.visibility = View.GONE
-                passportImage?.visibility = View.GONE
                 paymoIdentifier.requestIdentification(
                     agentId = agentIdInput.text.toString().toInt(),
                     apiKey = apiKeyInput.text.toString()
@@ -43,22 +40,16 @@ class MainActivity : AppCompatActivity(), IdentificationListener {
     override fun onIdentificationComplete(identificationResult: IdentificationData) {
         resultInfo?.text = "Success: ${identificationResult.success}"
         if (identificationResult.success) {
-            identifiedImage?.visibility = View.VISIBLE
-            passportImage?.visibility = View.VISIBLE
             val data = identificationResult.userPassport!!
-            identifiedImage?.setImageBitmap(paymoIdentifier.base64ToBitmap(identificationResult.identifiedPhotoBase64))
-            passportImage?.setImageBitmap(paymoIdentifier.base64ToBitmap(data.photoBase64))
-            resultInfo?.append("\nName: ${data.firstName} ${data.lastName}")
-            resultInfo?.append("\nPassport number: ${data.passportNumber}")
-            resultInfo?.append("\nPIN: ${data.pin}")
-            resultInfo?.append("\nDate of birth: ${data.dateOfBirth}")
-            resultInfo?.append("\nDate of issue: ${data.dateOfIssue}")
-            resultInfo?.append("\nDate of expiry: ${data.dateOfExpiry}")
-            resultInfo?.append("\nIssuer centre: ${data.issuerCentre}")
-            resultInfo?.append("\nIP Address: ${identificationResult.ipAddress}")
-            resultInfo?.append("\nUserAgent: ${identificationResult.userAgent}")
-            resultInfo?.append("\nDevice Info: ${identificationResult.deviceInfo}")
-            resultInfo?.append("\nAuthKey: ${identificationResult.authKey}")
+            val targetBitmap =
+                paymoIdentifier.base64ToBitmap(identificationResult.identifiedPhotoBase64)
+            val passportBitmap = paymoIdentifier.base64ToBitmap(data.photoBase64)
+            val fragment = InfoFragment(
+                userPassport = data,
+                passportBitmap = passportBitmap,
+                targetBitmap = targetBitmap
+            )
+            fragment.show(supportFragmentManager, "PassportInfo")
         }
     }
 
