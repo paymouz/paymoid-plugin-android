@@ -39,14 +39,12 @@ data class IdentificationData(
      * Device user agent during identification
      * NOTE: if [success] is false, [userAgent] will be empty
      */
-    @SerializedName("user_agent")
     val userAgent: String = "",
 
     /**
      * Device information
      * NOTE: if [success] is false, [deviceInfo] will be empty
      */
-    @SerializedName("device")
     val deviceInfo: String = "",
 
     /**
@@ -54,7 +52,6 @@ data class IdentificationData(
      * NOTE: if [success] is false, [identifiedPhotoBase64] will be empty
      * NB: Person's passport face photo is stored in [UserPassport.photoBase64]
      */
-    @SerializedName("photo")
     val identifiedPhotoBase64 : String = "",
 
     /**
